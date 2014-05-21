@@ -12,7 +12,7 @@ Each phase has key-value pairs as input and output that may be chosen by the pro
 
 The output of the Map is processed by the MapReduce framework before being sent to the Reduce:
 
-TODO: [image-01]
+![alt text](image-01.png)
 
 #### Implementation: Map
 
@@ -73,7 +73,7 @@ With more than one-block, its difficult that the same node has more than one of 
 
 **Reduce don't have data locality optimization**. The input to a single reduce is usually the output of all mappers that has benn network transferred. The first replica of the reduce is written in the local HDFS and other will be written in off-rack nodes.
 
-TODO [image-02]
+![alt text](image-02.png)
 
 They can be one or multiple reducers tasks. If there are more than one the mapper partition the output but the records for a given key will be all in the same partition always.
 
