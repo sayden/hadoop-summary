@@ -120,4 +120,40 @@ There are also methods for creating and deleting directories and to query the fs
 
 ## Data flow
 
+### Anatomy of a file read
+
 ![alt text](image-04.png)
+
+### Anatomy of a file write
+
+![alt text] (image-05.png)
+
+### Replica placement
+
+It places first replica on the same node as the client, second on a different random rack from the first (*off-rack*), the third is on the same rack as the second but on a different node
+
+### Coherency model
+
+Describes data visibility or reads and writes because any content written to files are not guaranteed to be visible even if the stream is flushed until at least one block of data is written. 
+
+It is possible to force all buffers to be synchronized to the datanodes via **FSDataOutputStream.sync()**
+
+Without the sync a full block is lost in case of failure. If this is not acceptable a sync() must be placed after writing a certain number of records
+
+## Parallel Copying with distcp
+
+To copy large amounts of data to and from Hadoop. Sintax:
+
+	hadoop distcp [hdfs://input/data] [hdfs://new-location]
+
+distcp is a MapReduce job without reducers, the numbers of map is total size divided by 256 (in MB). 20 map task are default for each TaskTracker. It can not copy between different cluster versions.
+
+## Hadoop Archives
+
+Many 1mb small size files will use a 64 mb block each (even when it will still use the 1mb). To handle this a Hadoop HAR file can be created collecting many small files that is made of:
+
+1. part-*			-> Contains the content of the original files concatenated together
+2. _index 			-> Use to search for a file inside the part- files
+3. _masterindex
+
+However, create a HAR **creates a copy of the original files** and to add or remove it's needed to re-create the HAR file.
