@@ -65,7 +65,7 @@ Two key properties:
 * **hadoop fs -copyFromLocal [input] [output]** copies from local storage to HDFS
 * **hadoop fs -copyToLocal [input] [output]** copies from HDFS to local storage
 * **hadoop fs -ls [path]** list files in HDFS
-* **hadoop fs -mkdir [folder] ** creates a new folder in the HDFS
+* **hadoop fs -mkdir [folder]** creates a new folder in the HDFS
 
 #### Permissions
 
