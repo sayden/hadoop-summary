@@ -60,6 +60,6 @@ The `--input-fields-terminated '\0001'` is the default delimiter that is used in
 
 ## Exports: A Deeper Look
 
-![alt text](image-13.png)
+![alt text](./image-13.png)
 
 The export process is similar: some parallel tasks performs queries to the MySQL ddbb but they are nor ordered or atomic operations. Sqoop can also exports records stored in SequenceFiles
