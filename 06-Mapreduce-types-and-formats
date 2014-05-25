@@ -1,0 +1,14 @@
+# MaReduce Types and Formats
+
+## MapReduce types
+
+* map: (k1, v1) -> list(k2, v2)
+* combine: (k2, list(v2)) -> list(k2, v2)
+* reduce: (k2, list(v2)) -> list(k3, v3)
+
+Context objects are used for emitting key-value pairs. While it's good to match map output with reduce input, it's not enforced by the Java compiler
+
+The partition operates on the intermediate key and value types (k2 and v2) and returns the partition index.
+
+Input types are set by the input format, the other types are set in the Job. If not set, the intermediates types default to the final output types, so if k2 and k3 are the same there is no need to call **setMapOutputKeyClass()**. Some must be set because some in some aspects the type can be checked at compile time.
+
