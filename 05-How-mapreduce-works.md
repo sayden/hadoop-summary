@@ -217,6 +217,15 @@ Used to ensure that jobs and tasks either succeed or fail throught the OutputCom
 
 When writing custom outputs from reduce to HDFS, care needs to be taken that multiple instance don't try to write the same file.
 
-## Task JVM Reuse
+### Task JVM Reuse
 
 Jobs with many short-lived tasks can see performance gains with reusing but the task will run sequentially instead of concurrently
+
+### Skipping bad records
+
+*Skipping record* will re-try a task this way:
+
+1. Task fail
+2. Task fail
+3. **Skipping record** enabled after to fails. Task fail but failed records are stored in the TaskTracker
+4. With skipping mode enabled, task succeeds by skipping the records of the 3rd pass.
