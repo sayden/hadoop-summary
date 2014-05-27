@@ -70,7 +70,7 @@ Using `$ hive --service` option you can run the following:
 
 ### Hice Clients
 
-![alt text](image-10.png)
+![alt text](img/image-10.png)
 
 1. Thrift Client: Makes easy to run Hive commands from many programming languages.
 2. JDBC Driver: `org.apache.hadoop.hive.jdbc.HiveDriver` using a form like `jdbc:hive://host:port/dbname`
@@ -80,7 +80,7 @@ Using `$ hive --service` option you can run the following:
 
 A service and a backing store running on the same JVM (embedded metastore) that gives one session to Hive. With standalone database you can use multiple sessions (users)
 
-![alt text](image-11.png)
+![alt text](img/image-11.png)
 
 The standalone metastore can be MySQL. The service must set to use the remote metastore with `hive.meta.store.local` to **false** and `hive.metastore.uris` to the metastore URI:
 
@@ -346,4 +346,4 @@ The implementation has to be capable of combining partial aggregations into a fi
 * **merge()** called when Hive decides to combine aggregations
 * **terminate()** called when the final result of the aggregation is needed
 
-![alt text](image-14.png)
+![alt text](img/image-14.png)

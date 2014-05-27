@@ -48,7 +48,7 @@ We create the context object passing to the static `mock` method the class. Then
 
 ### Jobtracker Page
 
-![alt text](image-07.png)
+![alt text](img/image-07.png)
 
 1. Hadoop installation: version, compilation, jobtracker state...
 2. Summary of the cluster: capacity, utilization, mr running, jobs, tasktrackers, slots, blacklisted Tasktrackers
@@ -57,7 +57,7 @@ We create the context object passing to the static `mock` method the class. Then
 
 ### Job page
 
-![alt text](image-08.png)
+![alt text](img/image-08.png)
 
 * Job progress
 * Owner

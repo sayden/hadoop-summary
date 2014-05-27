@@ -28,7 +28,7 @@ Pig translates queries into MapReduce jobs. The pig.properties must have:
 * **FOREACH grouped_records GENERATE group;** Foreach process every row to to generate a derived set of rows with the fields of the GENERATE clause.
 * **ILLUSTRATE var;** Shows pretty info of a var.
 
-![alt text](image-19.png)
+![alt text](img/image-19.png)
 
 ## Pig Latin
 
@@ -53,7 +53,7 @@ With **REGISTER, DEFINE** and **IMPORT** you can register UDF and macros to Pig.
 
 ### Types
 
-![alt text](image-20.png)
+![alt text](img/image-20.png)
 
 **TOTUPLE, TOBAG** and **TOMAP** are used to turn expressions into those types. A relation is a top-level construct whereas a bag has to be contained in a relation
 
@@ -83,7 +83,7 @@ When trying to load a string into an int, it will fail and a null will be produc
 3. **Load function**: Specifies how to load data into a relation from external storage.
 4. **Store function**: A function that specifies how to save the contents of a relation to external storage.
 
-![alt text](image-21.png)
+![alt text](img/image-21.png)
 
 ### Macros
 For example, we can extract the part of our Pig Latin program that performs grouping on a relation then finds the maximum value in each group, by defining a macro as follows:

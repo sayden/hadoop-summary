@@ -51,7 +51,7 @@ RPC must be:
 
 #### Writable Classes
 
-![alt text](image-06.png)
+![alt text](img/image-06.png)
 
 When encoding integers you can use the fixed length (IntWritable) or variable (VIntWritable). Most numeric variables tend to have non uniform distributions so on average they will save space.
 
@@ -92,10 +92,66 @@ A Serialization defines a mapping from types to Serializer instances (for turnin
 
 #### Avro
 
-Language-neutral serialization system to be processed by many languages (C, C++, Python...)
+Resume in here:
+http://blog.cloudera.com/blog/2009/11/avro-a-new-format-for-data-interchange/
 
-TODO
+Language-neutral serialization system to be processed by many languages (C, C++, Python...). Uses *schemas* in JSON but code generation is optional (you can read data that conforms to a given schema even if your code has not seen that schema before) and provides API's for des/serialization
+
+It has common data types (null, boolean, int, bytes, string...) and some complex types (array, map, enum...). Typical Avro schema with types:
+
+```json
+	{
+		"type":"record",
+		"name":"StringPair",
+		"doc": "A pair of strings.",
+		"fields":{
+			{"name":"left", "type":"string"},
+			{"name":"right", "type":"string"}
+		}
+	}
+```
+
+Then to load, use and serialize a record in Java (the use will be similar in Python, for example):
+
+```java
+	//Loads
+	Schema.Parser parser = new Schema.Parser();
+	Schema schema = parser.parse(getClass().getResourceAsStream("StringPair.avsc"));
+
+	//Creates Avro instance
+	GenericRecord datum = new GenericData.Record(schema);
+	datum.put("left", "L");
+	datum.put("right", "R");
+
+	//Serialize to an output stream
+	ByteArrayOutputStream out = new ByteArrayOutputStream();
+	DatumWriter<GenericRecord> writer = new GenericDatumWriter<GenericRecord>(schema);
+	Encoder encoder = EncoderFactory.get().binaryEncoder(out, null);
+	writer.write(datum, encoder);
+	encoder.flush();
+	out.close();
+```
+
+TODO?
 
 ## File-Based Data Structures
 
-TODO
+### SequenceFile
+* **Writing**: Good to persist binary data structure for key-value pairs. To write a SequenceFile use a **createWriter()** method which returns a SequenceFile.Writer where we use the **append()** method (optional arguments include compression and codec). 
+* **Reading**: With a **SequenceFile.Reader** and iterating with **next()** if they are Writable types or also **getCurrentValue(Object val)** if using non-Writable.
+* **Seeking / finding**: Using **seek()** to retrieve a given position in a sequence file.
+
+#### Command line actions
+If a SequenceFile has a meaningful text representation it can be read as follows:
+
+	hadoop fs -text numbers.seq | head
+
+And can be sorted using MapReduce job
+
+#### The SequenceFile format
+Consists of a header followed by one or more records, it also contains other fields including the *sync* marker that allow a reader to synchronize to a record boundary.
+
+![Internal structure of a sequence file](img/image-22.png)
+
+#### MapFile
+Is a sorted SequenceFile with an index por permit lookups by key. Is written with an instance of **MapFile.Writer** and calling **append()** to add entries in order.

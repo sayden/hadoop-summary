@@ -4,7 +4,7 @@ Prior to 0.23, setting `mapred.job.tracker` to **local**  the local job runner i
 
 ## Classic MapReduce (MapReduce 1)
 
-![alt text](image-09.png)
+![alt text](img/image-09.png)
 
 1. Client submits job
 2. **JobTracker** coordinates job run
@@ -47,7 +47,7 @@ The jobtracker changes the status of the job to "successful", the **Job** polls 
 
 ## YARN (MapReduce 2)
 
-![alt text](image-16.png)
+![alt text](img/image-16.png)
 
 Splits JobTracker into 2: a **resource manager** to manage the use of resources across the cluster and an **application master** to manage the lifecycle of the apps running the cluster. The idea is that an app negotiates with the *resource manager* for cluster resources. Each instance of an app has an **application master** that runs for the duration of the app.
 
@@ -82,7 +82,7 @@ The memory must be multiple of minimum allocation and it will request just the n
 
 ### Task execution
 
-![alt text](image-17.png)
+![alt text](img/image-17.png)
 
 **YarnChild** localizes resources and runs in a dedicated JVM (but it can't be reused)
 
@@ -160,7 +160,7 @@ The input to every reducer is sorted by key, this is known as the *shuffle*
 
 ## The Map Side
 
-![alt text](image-18.png)
+![alt text](img/image-18.png)
 
 Each map task has a circular memory buffer that it writes the output to. The buffer is 100 MB (`io.sort.mb`). When the content reaches a threshold (`io.sort.spill.percent`, default to 0.80) a background thread will spill the contents to disk. If the buffer is filled the map will block unil the spill is complete and a new spill file is created. Finally all the spills are merged and sorted again. `io.sort.factor` controls the maximum number of streams to merge at once (defaults 10)
 

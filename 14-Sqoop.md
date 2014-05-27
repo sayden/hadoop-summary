@@ -26,7 +26,7 @@ Sqoop also supports Avro
 
 ## Database Imports: A Deeper Look
 
-![alt text](image-12.png)
+![alt text](img/image-12.png)
 
 Sqoop examines the table, get all columns and types to map the to Java types and create a model of the table. Then, with the **readFields(ResultSet res)** and the **write(PreparedStatement s)** reads and writes the ddbb
 
@@ -60,6 +60,6 @@ The `--input-fields-terminated '\0001'` is the default delimiter that is used in
 
 ## Exports: A Deeper Look
 
-![alt text](./image-13.png)
+![alt text](./img/image-13.png)
 
 The export process is similar: some parallel tasks performs queries to the MySQL ddbb but they are nor ordered or atomic operations. Sqoop can also exports records stored in SequenceFiles

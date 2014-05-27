@@ -94,7 +94,7 @@ The Java abstract org.apache.hadoop.fs.* has several implementations:
 
 #### HTTP
 
-![alt text](image-03.png "HTTP API")
+![alt text](img/image-03.png "HTTP API")
 
 The first way of accesing, direct, is served directly by namenodes webserver (defaults to 50070) while file data is streamed from datanodes by their web servers (running on port 50075). The WebHDFS must be enabled by setting `dfs.webhdfs.enabled` to true.
 
