@@ -3,5 +3,10 @@ hadoop-resume
 
 A Hadoop architectures and technologies resume. The files are the following:
 
-1. **01-MapReduce.md**: MapReduce notes
-2. **02-hdfs.md**: HDFS notes. Also introduction to Namenodes and SecondaryNamenodes as well as some details of the architecture
+* **01-MapReduce**: MapReduce notes
+* **02-hdfs**: HDFS notes. Also introduction to Namenodes and SecondaryNamenodes as well as some details of the architecture
+* **04-Developing a MapReduce application**:
+* **05-How MapReduce works**:
+* **10-Pig**: Pig language
+* **11-Hive**: Hive language
+* **14-Sqoop**: Sqoop import and export
