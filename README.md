@@ -13,3 +13,4 @@ A Hadoop architectures and technologies resume. The files are the following:
 * **11-Hive**: Hive language
 * **12-HBase**: Hbase database
 * **14-Sqoop**: Sqoop import and export
+* **15-ZooKeeper**
