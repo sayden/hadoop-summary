@@ -8,6 +8,7 @@ A Hadoop architectures and technologies resume. The files are the following:
 * **04-Developing a MapReduce application**
 * **05-How MapReduce works**
 * **06-MapReduce-types-and-formats.md**: A description of the MapReduce input and output formats that can be used and how to use them.
+* **08-Setting-a-hadoop-cluster.md**: Instructions to set up a cluster as well as how to deploy it on Amazon EC2
 * **10-Pig**: Pig language
 * **11-Hive**: Hive language
 * **12-HBase**: Hbase database
