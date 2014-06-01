@@ -56,7 +56,7 @@ Update operations are conditional. **delete** or **setData** has to specify the 
 #### Watch triggers
 **exists, getChildren** and **getData** may have watches (describe earlier) set on them.
 
-![Watch creation operations and their corresponding triggers](img/image-38.png)
+![Watch creation operations and their corresponding triggers](img/image-46.png)
 
 #### ACLs
 A znode is created with a list of ACLs, which determines who can perform certain operations on it. It depends on authentication:
