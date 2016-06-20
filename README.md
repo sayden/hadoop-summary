@@ -1,4 +1,4 @@
-hadoop-resume
+hadoop-summary
 =============
 
 A Hadoop architectures and technologies resume. The files are the following:
